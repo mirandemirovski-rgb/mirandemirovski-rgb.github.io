@@ -1,0 +1,67 @@
+/* Shared base for the five preview styles. Each style sets --pv-bg / --pv-fg / --pv-line. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body { margin: 0; overflow-x: clip; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+mark.gap {
+  background: transparent;
+  color: inherit;
+  outline: 1px dashed currentColor;
+  outline-offset: 2px;
+  padding: 0 .25em;
+  border-radius: 2px;
+  opacity: .75;
+}
+
+/* Preview navigation bar (previews only, not part of the final CV). */
+.pv-bar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--pv-bg, #111);
+  color: var(--pv-fg, #fff);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .18), 0 0 0 1px var(--pv-line, rgba(255, 255, 255, .12));
+  font: 500 13px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  max-width: calc(100vw - 32px);
+}
+.pv-bar a, .pv-bar button {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.pv-btn { width: 36px; font-size: 16px; }
+.pv-home { padding: 0 12px; gap: 6px; }
+.pv-n { opacity: .55; font-variant-numeric: tabular-nums; }
+.pv-bar a:hover, .pv-bar button:hover { background: rgba(127, 127, 127, .18); }
+
+@media print { .pv-bar { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0s !important;
+  }
+}
