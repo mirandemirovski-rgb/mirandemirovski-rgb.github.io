@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miran Demirovski · CV (PDF layout)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300..700&family=Geist:wght@400;500;600&display=swap">
+<style>
+/* One-page A4 CV. Same content as the website, no animation. */
+@page { size: A4; margin: 0; }
+:root { --ink: #0e1116; --muted: #5b6270; --line: #d9dce1; --navy: #1c2f5c; --sans: "Public Sans", "Helvetica Neue", Arial, sans-serif; --label: "Geist", "Helvetica Neue", Arial, sans-serif; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #e9eaeb; }
+body { font: 400 7.5pt/1.36 var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; margin: 0 auto; background: #fff; padding: 11mm 12mm 9mm; display: grid; grid-template-rows: auto 1fr auto; gap: 5mm; overflow: hidden; }
+@media screen { .page { margin-block: 24px; box-shadow: 0 10px 40px rgba(0,0,0,.12); } }
+@media print { html, body { background: #fff; } .page { margin: 0; box-shadow: none; } }
+.lab { font-family: var(--label); font-size: 6.6pt; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+mark.gap { background: none; color: inherit; outline: .6pt dashed currentColor; padding: 0 2pt; }
+
+header { display: grid; grid-template-columns: 26mm 1fr auto; gap: 6mm; align-items: end; padding-bottom: 4.5mm; border-bottom: 1pt solid var(--ink); }
+header img { width: 26mm; height: 31mm; object-fit: cover; object-position: 56% 40%; display: block; }
+h1 { margin: 0; font-size: 26pt; line-height: .95; font-weight: 600; letter-spacing: -.03em; }
+.headline { margin: 2.6mm 0 0; font-size: 9.4pt; }
+.now { margin: 1.8mm 0 0; color: var(--muted); }
+.now b { color: var(--ink); font-weight: 600; }
+.contact { display: grid; gap: 1.4mm; text-align: right; font-size: 8pt; }
+.contact a { color: inherit; text-decoration: none; }
+
+.cols { display: grid; grid-template-columns: 55mm 1fr; gap: 7mm; min-height: 0; align-items: start; }
+h2 { margin: 0 0 2mm; padding-bottom: 1.3mm; border-bottom: .6pt solid var(--ink); color: var(--navy); }
+.side { display: grid; gap: 3mm; align-content: start; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm 4mm; }
+.facts b { display: block; font-size: 14pt; line-height: 1; font-weight: 300; letter-spacing: -.03em; }
+.facts span { color: var(--muted); font-size: 7pt; line-height: 1.3; display: block; margin-top: .8mm; }
+.about p { margin: 0 0 1.2mm; }
+.skills { display: grid; gap: 1.6mm; }
+.skills .g { color: var(--muted); margin-bottom: .6mm; }
+.skills p { margin: 0; }
+.hl { display: grid; gap: 1.4mm; }
+.hl p { margin: 0; }
+.rows div { display: flex; justify-content: space-between; gap: 2mm; padding: .9mm 0; border-bottom: .5pt solid var(--line); }
+.rows span:last-child { color: var(--muted); text-align: right; }
+
+.jobs { display: grid; gap: 2.4mm; align-content: start; }
+.job .top { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+.job .when { color: var(--muted); white-space: nowrap; }
+.job h3 { margin: 0; font-size: 9pt; font-weight: 600; line-height: 1.25; }
+.job .co { margin: 0; color: var(--muted); }
+.job ul { margin: .8mm 0 0; padding-left: 3.2mm; }
+.job li { margin: 0 0 .3mm; }
+.earlier div { display: grid; grid-template-columns: 1fr auto; gap: 3mm; padding: 1mm 0; border-bottom: .5pt solid var(--line); }
+.earlier b { font-weight: 600; }
+.earlier .lab { color: var(--muted); white-space: nowrap; }
+.trio { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 3.6mm; }
+footer { display: flex; justify-content: space-between; color: var(--muted); border-top: .6pt solid var(--line); padding-top: 2mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <img id="photo" alt="Portrait of Miran Demirovski">
+    <div>
+      <h1 id="name"></h1>
+      <p class="headline" id="headline"></p>
+      <p class="now lab" id="now"></p>
+    </div>
+    <div class="contact" id="contact"></div>
+  </header>
+  <div class="cols">
+    <aside class="side">
+      <div><h2 class="lab">Key figures</h2><div class="facts" id="facts"></div></div>
+      <div class="about"><h2 class="lab">Profile</h2><div id="about"></div></div>
+      <div><h2 class="lab">Highlights</h2><div class="hl" id="hl"></div></div>
+      <div><h2 class="lab">Skills</h2><div class="skills" id="skills"></div></div>
+    </aside>
+    <main>
+      <h2 class="lab">Experience</h2><div class="jobs" id="jobs"></div>
+      <h2 class="lab" style="margin-top:3.6mm">Earlier roles</h2><div class="earlier" id="earlier"></div>
+      <div class="trio">
+        <div><h2 class="lab">Languages</h2><div class="rows" id="langs"></div></div>
+        <div><h2 class="lab">Education &amp; certificates</h2><div class="rows" id="edu"></div></div>
+      </div>
+    </main>
+  </div>
+  <footer class="lab"><span id="f-name"></span><span id="f-web"></span></footer>
+</div>
+<script src="assets/cv-data.js"></script>
+<script>
+(function () {
+  var C = window.CV;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function t(s) { return esc(s).replace(/\[\[(.+?)\]\]/g, '<mark class="gap">$1</mark>'); }
+  function $(s) { return document.querySelector(s); }
+  // The last five roles are shown as one-line rows.
+  var OLDER = ["ttec-css", "tp-tl", "tp-senior", "tp-css", "data"];
+  $("#photo").src = C.photo.bw;
+  $("#name").innerHTML = esc(C.first) + "<br>" + esc(C.last);
+  $("#headline").innerHTML = t(C.headline);
+  $("#now").innerHTML = "Now — <b>" + t(C.now.title) + ", " + t(C.now.company) + "</b>";
+  $("#contact").innerHTML = "<span>" + t(C.location) + '</span><a href="mailto:' + C.email + '">' + t(C.email) + '</a><a href="' + C.linkedin + '">' + t(C.linkedinLabel) + '</a><a href="https://' + C.site + '/">' + t(C.site) + "</a>";
+  $("#facts").innerHTML = C.facts.map(function (f) { return "<div><b>" + (f.decimals ? f.value.toFixed(f.decimals) : f.value) + f.suffix + "</b><span>" + t(f.unit + " " + f.label) + "</span></div>"; }).join("");
+  $("#about").innerHTML = "<p><b>" + t(C.tagline) + "</b></p><p>" + C.about.map(t).join(" ") + "</p>";
+  $("#hl").innerHTML = C.highlights.map(function (h) { return "<p><b>" + t(h.title) + "</b> · " + t(h.when) + "<br>" + t(h.text) + "</p>"; }).join("");
+  $("#skills").innerHTML = C.skills.map(function (g) { return '<div><div class="lab g">' + t(g.group) + "</div><p>" + g.items.map(t).join(" · ") + "</p></div>"; }).join("");
+  $("#langs").innerHTML = C.languages.map(function (l) { return "<div><span>" + t(l.name) + "</span><span>" + t(l.level) + "</span></div>"; }).join("");
+  var e = C.education;
+  $("#edu").innerHTML = "<div><span>" + t(e.title) + ", " + t(e.school) + "</span><span>" + t(e.year) + "</span></div>" +
+    C.certificates.map(function (c) { return "<div><span>" + t(c.title) + "</span><span>" + t(c.year) + "</span></div>"; }).join("");
+  var main = C.jobs.filter(function (j) { return OLDER.indexOf(j.id) < 0; });
+  var older = C.jobs.filter(function (j) { return OLDER.indexOf(j.id) >= 0; });
+  $("#earlier").innerHTML = older.map(function (j) { return "<div><span><b>" + t(j.title) + "</b> · " + t(j.company) + '</span><span class="lab">' + t(j.dates) + "</span></div>"; }).join("");
+  $("#jobs").innerHTML = main.map(function (j) {
+    return '<div class="job"><div class="top"><h3>' + t(j.title) + '</h3><span class="when lab">' + t(j.dates) + '</span></div><p class="co">' + t(j.company) + (j.place ? " · " + t(j.place) : "") + "</p>" +
+      (j.points.length ? "<ul>" + j.points.map(function (p) { return "<li>" + t(p) + "</li>"; }).join("") + "</ul>" : "") +
+      "</div>";
+  }).join("");
+  $("#f-name").textContent = C.first + " " + C.last + " · CV";
+  $("#f-web").textContent = C.site;
+})();
+</script>
+</body>
+</html>

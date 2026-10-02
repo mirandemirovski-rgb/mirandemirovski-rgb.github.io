@@ -2,18 +2,15 @@
 
 Interactive CV website for Miran Demirovski, published with GitHub Pages.
 
-## Previews (choose a style)
-
-`previews/` holds five test versions of the CV. All five use the same content.
-
-| Page | What it is |
+| File | What it is |
 | --- | --- |
-| `previews/index.html` | Showcase of the five styles, with videos and notes |
-| `previews/styles/*.html` | The five live previews: Blueprint, Darkroom, Ink, Live Ops, Swiss Grid |
-| `previews/print.html` | The one-page A4 layout used for the PDF |
-| `previews/assets/cv-data.js` | The CV content. Edit text here once and every style updates |
-| `previews/assets/Miran-Demirovski-CV.pdf` | The one-page PDF |
+| `index.html` | The CV website (Blueprint style) |
+| `assets/cv-data.js` | All CV text. Edit it here once; the website and the PDF layout both update |
+| `print.html` | The one-page A4 layout used to make the PDF |
+| `assets/Miran-Demirovski-CV.pdf` | The one-page PDF behind the "Download PDF" button |
+| `assets/og-image.png` | The picture shown when the link is shared |
+| `previews/` | The five style tests used to choose the design |
 
 Text in `[[double brackets]]` inside `cv-data.js` is information that is still missing. Pages show it with a dashed box.
 
-To view locally, serve the folder (for example `python3 -m http.server --directory previews`) and open `http://localhost:8000`.
+To view locally: `python3 -m http.server` in this folder, then open `http://localhost:8000`.
