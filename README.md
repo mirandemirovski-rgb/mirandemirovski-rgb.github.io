@@ -9,8 +9,7 @@ Interactive CV website for Miran Demirovski, published with GitHub Pages.
 | `print.html` | The one-page A4 layout used to make the PDF |
 | `assets/Miran-Demirovski-CV.pdf` | The one-page PDF behind the "Download PDF" button |
 | `assets/og-image.png` | The picture shown when the link is shared |
-| `previews/` | The five style tests used to choose the design |
 
-Text in `[[double brackets]]` inside `cv-data.js` is information that is still missing. Pages show it with a dashed box.
+To add a certificate, copy one line in the `certificates` list in `cv-data.js` and change the text and link.
 
 To view locally: `python3 -m http.server` in this folder, then open `http://localhost:8000`.

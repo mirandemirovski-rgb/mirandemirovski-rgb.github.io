@@ -1,4 +1,4 @@
-/* Shared helpers for the five preview styles. No libraries. */
+/* Shared helpers for the CV page. No libraries. */
 (function () {
   "use strict";
 
@@ -9,13 +9,6 @@
   document.documentElement.classList.add("js");
   if (reduced) document.documentElement.classList.add("reduced");
 
-  var STYLES = [
-    { slug: "blueprint", name: "Blueprint" },
-    { slug: "darkroom", name: "Darkroom" },
-    { slug: "ink", name: "Ink" },
-    { slug: "live-ops", name: "Live Ops" },
-    { slug: "swiss", name: "Swiss Grid" }
-  ];
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) {
@@ -131,32 +124,14 @@
 
   function nowYM() { var d = new Date(); return [d.getFullYear(), d.getMonth() + 1]; }
 
-  // The small bar that links the five previews together.
-  function previewBar(slug) {
-    var i = STYLES.findIndex(function (s) { return s.slug === slug; });
-    var prev = STYLES[(i + STYLES.length - 1) % STYLES.length];
-    var next = STYLES[(i + 1) % STYLES.length];
-    var bar = el("nav", "pv-bar");
-    bar.setAttribute("aria-label", "Preview navigation");
-    bar.innerHTML =
-      '<a class="pv-btn" href="' + prev.slug + '.html" aria-label="Previous style: ' + prev.name + '">&larr;</a>' +
-      '<a class="pv-home" href="../index.html"><span class="pv-n">' + (i + 1) + '/5</span> ' + STYLES[i].name + '</a>' +
-      '<button class="pv-btn pv-replay" type="button" aria-label="Replay the build">&#8635;</button>' +
-      '<a class="pv-btn" href="' + next.slug + '.html" aria-label="Next style: ' + next.name + '">&rarr;</a>';
-    document.body.appendChild(bar);
-    bar.querySelector(".pv-replay").addEventListener("click", function () {
-      window.scrollTo(0, 0);
-      location.reload();
-    });
-  }
 
   window.addEventListener("load", function () { window.scrollTo(0, 0); });
 
   window.Core = {
-    reduced: reduced, finePointer: finePointer, STYLES: STYLES,
+    reduced: reduced, finePointer: finePointer,
     esc: esc, t: t, $: $, $$: $$, el: el,
     onView: onView, reveal: reveal, tween: tween, easeOut: easeOut, easeInOut: easeInOut,
     countUp: countUp, fmtNum: fmtNum, split: split, onScroll: onScroll, progress: progress,
-    pageProgress: pageProgress, months: months, nowYM: nowYM, previewBar: previewBar
+    pageProgress: pageProgress, months: months, nowYM: nowYM
   };
 })();
