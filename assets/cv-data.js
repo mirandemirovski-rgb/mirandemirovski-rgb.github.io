@@ -166,8 +166,11 @@ window.CV = {
   education: { title: "High School Diploma", school: "ITS Enrico Mattei", place: "Italy", year: "2003" },
 
   // Waiting for Miran's files and text.
+  // Newest first. To add one, copy a line and change the text and link.
   certificates: [
-    { title: "[[Certificate name]]", issuer: "[[Issued by]]", year: "[[Year]]" }
+    { title: "Google Apps Script Complete Course Beginner to Advanced", issuer: "Udemy", date: "Sep 2026", hours: "27.5 hours", url: "https://ude.my/UC-7d7a07d4-f35b-41f0-b46d-337b5067594c" },
+    { title: "The Complete Claude Code & Claude Cowork Masterclass", issuer: "Udemy", date: "Sep 2026", hours: "22 hours", url: "https://ude.my/UC-faf5f465-3037-4f49-a009-6dc53efe6a90" },
+    { title: "Google Script: How to Update Google Sheet Data from a Web App", issuer: "Udemy", date: "Sep 2026", hours: "1.5 hours", url: "https://ude.my/UC-48aaa088-9ca6-4fe8-860b-cdb5b9d951e2" }
   ],
   projects: [
     { title: "Frammenti", kind: "Poetry", text: "My poetry website. Writing is my hobby.", url: "https://mirandemirovski-rgb.github.io/frammenti/", label: "mirandemirovski-rgb.github.io/frammenti" }

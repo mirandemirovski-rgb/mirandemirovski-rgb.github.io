@@ -234,6 +234,13 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
 .rows { display: grid; border-top: 1px solid var(--ink); }
 .row { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--grid-strong); font-size: 18px; }
 .row .lab { color: var(--muted); align-self: center; text-align: right; }
+.cert { align-items: center; }
+.cert .ct { display: grid; gap: 4px; min-width: 0; }
+.cert .cn { font-size: 18px; line-height: 1.3; }
+.cert .cm { text-align: left; }
+.cert .cr { display: grid; gap: 6px; justify-items: end; flex: none; }
+.cert .verify { color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--dim-soft); padding-bottom: 1px; }
+.cert .verify:hover { color: var(--ink); border-color: var(--ink); }
 .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .project { position: relative; display: grid; gap: 6px; padding: 26px 24px; text-decoration: none; background: var(--paper); transition: background .3s ease, color .3s ease; min-width: 0; }
 .project .k { color: var(--dim); }
@@ -458,7 +465,8 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   $("#edu").innerHTML = '<div class="row"><span>' + t(e.title) + '</span><span class="lab">' + t(e.year) + '</span></div>' +
     '<div class="row"><span>' + t(e.school) + '</span><span class="lab">' + t(e.place) + "</span></div>";
   $("#certs").innerHTML = C.certificates.map(function (c) {
-    return '<div class="row"><span>' + t(c.title) + " · " + t(c.issuer) + '</span><span class="lab">' + t(c.year) + "</span></div>";
+    return '<div class="row cert"><span class="ct"><span class="cn">' + t(c.title) + '</span><span class="lab cm">' + t(c.issuer) + " · " + t(c.hours) + '</span></span>' +
+      '<span class="cr"><span class="lab">' + t(c.date) + '</span><a class="lab verify" href="' + c.url + '" target="_blank" rel="noopener">Verify ↗</a></span></div>';
   }).join("");
   $("#projects").innerHTML = C.projects.map(function (x) {
     return '<a class="project" href="' + x.url + '" target="_blank" rel="noopener"><span class="b t"></span><span class="b r"></span><span class="b bt"></span><span class="b l"></span>' +

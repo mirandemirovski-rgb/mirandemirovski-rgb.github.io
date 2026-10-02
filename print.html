@@ -73,18 +73,16 @@ footer { display: flex; justify-content: space-between; color: var(--muted); bor
   </header>
   <div class="cols">
     <aside class="side">
-      <div><h2 class="lab">Key figures</h2><div class="facts" id="facts"></div></div>
       <div class="about"><h2 class="lab">Profile</h2><div id="about"></div></div>
       <div><h2 class="lab">Highlights</h2><div class="hl" id="hl"></div></div>
       <div><h2 class="lab">Skills</h2><div class="skills" id="skills"></div></div>
+      <div><h2 class="lab">Languages</h2><div class="rows" id="langs"></div></div>
+      <div><h2 class="lab">Education</h2><div class="rows" id="edu"></div></div>
     </aside>
     <main>
       <h2 class="lab">Experience</h2><div class="jobs" id="jobs"></div>
       <h2 class="lab" style="margin-top:2.8mm">Earlier roles</h2><div class="earlier" id="earlier"></div>
-      <div class="trio">
-        <div><h2 class="lab">Languages</h2><div class="rows" id="langs"></div></div>
-        <div><h2 class="lab">Education &amp; certificates</h2><div class="rows" id="edu"></div></div>
-      </div>
+      <h2 class="lab" style="margin-top:2.8mm">Certificates</h2><div class="earlier" id="certs"></div>
     </main>
   </div>
   <footer class="lab"><span id="f-name"></span><span id="f-web"></span></footer>
@@ -103,14 +101,14 @@ footer { display: flex; justify-content: space-between; color: var(--muted); bor
   $("#headline").innerHTML = t(C.headline);
   $("#now").innerHTML = "Now — <b>" + t(C.now.title) + ", " + t(C.now.company) + "</b>";
   $("#contact").innerHTML = "<span>" + t(C.location) + '</span><a href="mailto:' + C.email + '">' + t(C.email) + '</a><a href="' + C.linkedin + '">' + t(C.linkedinLabel) + '</a><a href="https://' + C.site + '/">' + t(C.site) + "</a>";
-  $("#facts").innerHTML = C.facts.map(function (f) { return "<div><b>" + (f.decimals ? f.value.toFixed(f.decimals) : f.value) + f.suffix + "</b><span>" + t(f.unit + " " + f.label) + "</span></div>"; }).join("");
   $("#about").innerHTML = "<p><b>" + t(C.tagline) + "</b></p><p>" + C.about.map(t).join(" ") + "</p>";
   $("#hl").innerHTML = C.highlights.map(function (h) { return "<p><b>" + t(h.title) + "</b> · " + t(h.when) + "<br>" + t(h.text) + "</p>"; }).join("");
   $("#skills").innerHTML = C.skills.map(function (g) { return '<div><div class="lab g">' + t(g.group) + "</div><p>" + g.items.map(t).join(" · ") + "</p></div>"; }).join("");
   $("#langs").innerHTML = C.languages.map(function (l) { return "<div><span>" + t(l.name) + "</span><span>" + t(l.level) + "</span></div>"; }).join("");
   var e = C.education;
-  $("#edu").innerHTML = "<div><span>" + t(e.title) + ", " + t(e.school) + "</span><span>" + t(e.year) + "</span></div>" +
-    C.certificates.map(function (c) { return "<div><span>" + t(c.title) + "</span><span>" + t(c.year) + "</span></div>"; }).join("");
+  $("#edu").innerHTML = "<div><span>" + t(e.title) + "<br>" + t(e.school) + ", " + t(e.place) + "</span><span>" + t(e.year) + "</span></div>" +
+    "";
+  $("#certs").innerHTML = C.certificates.map(function (c) { return '<div><span><b>' + t(c.title) + "</b> · " + t(c.issuer) + ", " + t(c.hours) + '</span><span class="lab">' + t(c.date) + "</span></div>"; }).join("");
   var main = C.jobs.filter(function (j) { return OLDER.indexOf(j.id) < 0; });
   var older = C.jobs.filter(function (j) { return OLDER.indexOf(j.id) >= 0; });
   $("#earlier").innerHTML = older.map(function (j) { return "<div><span><b>" + t(j.title) + "</b> · " + t(j.company) + '</span><span class="lab">' + t(j.dates) + "</span></div>"; }).join("");
