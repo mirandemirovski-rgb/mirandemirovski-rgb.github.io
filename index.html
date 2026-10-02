@@ -259,12 +259,6 @@ section .dim { color: var(--c, var(--dim)); }
 @keyframes wipe { to { transform: none; } }
 .updated { color: var(--muted); font-size: 10px; }
 
-/* Crosshair cursor aligned to the grid (computer only) */
-.xh { position: fixed; pointer-events: none; z-index: 50; opacity: 0; transition: opacity .3s ease; }
-.xh.on { opacity: 1; }
-.xh-v { top: 0; bottom: 0; width: 1px; background: var(--dim-soft); left: 0; }
-.xh-h { left: 0; right: 0; height: 1px; background: var(--dim-soft); top: 0; }
-.xh-r { font: 500 10px/1 var(--label); color: var(--dim); letter-spacing: .06em; padding: 4px 6px; background: var(--paper); border: 1px solid var(--dim-soft); top: 0; left: 0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
@@ -291,7 +285,6 @@ section .dim { color: var(--c, var(--dim)); }
   .corner { display: none; }
   .row { font-size: 17px; }
 }
-@media print { .xh { display: none; } }
 </style>
 </head>
 <body>
@@ -384,9 +377,6 @@ section .dim { color: var(--c, var(--dim)); }
   </section>
 </main>
 
-<div class="xh xh-v" aria-hidden="true"></div>
-<div class="xh xh-h" aria-hidden="true"></div>
-<div class="xh xh-r" aria-hidden="true"></div>
 
 <script src="assets/cv-data.js"></script>
 <script src="assets/core.js"></script>
@@ -543,19 +533,6 @@ section .dim { color: var(--c, var(--dim)); }
     }, { threshold: 0.8 });
   });
 
-  /* ---------- Crosshair cursor (computer only) ---------- */
-  if (K.finePointer && !K.reduced) {
-    var v = $(".xh-v"), hz = $(".xh-h"), r = $(".xh-r");
-    document.addEventListener("mousemove", function (ev) {
-      var x = Math.round(ev.clientX / 24) * 24, y = Math.round(ev.clientY / 24) * 24;
-      v.style.transform = "translateX(" + x + "px)";
-      hz.style.transform = "translateY(" + y + "px)";
-      r.style.transform = "translate(" + (x + 8) + "px," + (y + 8) + "px)";
-      r.textContent = "X " + x + " · Y " + (y + Math.round(window.scrollY / 24) * 24);
-      [v, hz, r].forEach(function (n) { n.classList.add("on"); });
-    });
-    document.addEventListener("mouseleave", function () { [v, hz, r].forEach(function (n) { n.classList.remove("on"); }); });
-  }
 })();
 </script>
 </body>
