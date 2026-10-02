@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200..800&family=Geist:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200..800&family=Geist:wght@400;500;600&family=Pinyon+Script&display=swap">
 <link rel="stylesheet" href="assets/core.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Miran Demirovski","jobTitle":"Real Time Analyst","worksFor":{"@type":"Organization","name":"Kaizen Gaming"},"address":{"@type":"PostalAddress","addressLocality":"Athens","addressCountry":"GR"},"email":"mailto:mirandemirovski@yahoo.it","url":"https://mirandemirovski-rgb.github.io/","sameAs":["https://www.linkedin.com/in/miran-demirovski-b1aa41196"]}
@@ -37,7 +37,7 @@
   --dim-soft: rgba(28, 47, 92, .2);
   --sans: "Public Sans", "Helvetica Neue", Arial, sans-serif;
   --label: "Geist", "Helvetica Neue", Arial, sans-serif;
-  --sign: "Mrs Saint Delafield", "Snell Roundhand", cursive;
+  --sign: "Pinyon Script", "Snell Roundhand", cursive;
   --gut: clamp(16px, 5vw, 64px);
   --max: 1180px;
   color-scheme: light;
@@ -234,8 +234,16 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
 .rows { display: grid; border-top: 1px solid var(--ink); }
 .row { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--grid-strong); font-size: 18px; }
 .row .lab { color: var(--muted); align-self: center; text-align: right; }
-.interests { display: flex; flex-wrap: wrap; gap: 8px; }
-.interests span { padding: 10px 14px; border: 1px solid var(--grid-strong); font-size: 16px; }
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.project { position: relative; display: grid; gap: 6px; padding: 26px 24px; text-decoration: none; background: var(--paper); transition: background .3s ease, color .3s ease; min-width: 0; }
+.project .k { color: var(--dim); }
+.project h3 { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -.01em; }
+.project p { margin: 0; color: var(--muted); }
+.project .go { margin-top: 10px; color: var(--ink); overflow-wrap: anywhere; }
+.project:hover { background: var(--ink); color: var(--paper); }
+.project:hover .k, .project:hover p, .project:hover .go { color: var(--paper); }
+.js .project .txt { opacity: 0; transition: opacity .7s ease .7s; }
+.js .project.in .txt { opacity: 1; }
 
 /* ---------- Contact + signature ---------- */
 .contact { padding-bottom: 120px; }
@@ -246,8 +254,8 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
 .contact .meta a:hover { color: var(--ink); }
 .contact .cta { margin-top: 28px; }
 .sign-off { margin-top: clamp(48px, 7vw, 80px); display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.sig { width: min(280px, 70vw); height: auto; overflow: visible; display: block; }
-.sig text { font-family: var(--sign); font-size: 150px; fill: var(--ink); stroke: var(--ink); stroke-width: .8; vector-effect: non-scaling-stroke; }
+.sig { width: min(300px, 72vw); height: auto; overflow: visible; display: block; }
+.sig text { font-family: var(--sign); font-size: 150px; fill: var(--ink); stroke: var(--ink); stroke-width: .6; vector-effect: non-scaling-stroke; }
 .js .sig text { fill-opacity: 0; stroke-dasharray: 900; stroke-dashoffset: 900; }
 .js .sig.go text { animation: sigdraw 2.6s cubic-bezier(.45,.1,.35,1) forwards, sigfill 1s ease 1.9s forwards; }
 .js .sig .wipe { transform: scaleX(0); transform-origin: left; transform-box: fill-box; }
@@ -272,7 +280,7 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   .fact:nth-child(2) { border-right: 0; }
   .fact:nth-child(3) { padding-left: 0; }
   .fact:nth-child(n+3) { border-top: 1px solid var(--grid-strong); }
-  .about, .duo, .callouts { grid-template-columns: minmax(0, 1fr); }
+  .about, .duo, .callouts, .projects { grid-template-columns: minmax(0, 1fr); }
   .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
@@ -314,7 +322,6 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
         <span class="scan" aria-hidden="true"></span>
       </div>
       <span class="vdim" aria-hidden="true"></span>
-      <figcaption class="lab fade-late" style="--d:3.3s"><span>Fig. 1 — Portrait</span><span id="place"></span></figcaption>
     </figure>
   </div>
 </header>
@@ -366,9 +373,9 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   </section>
 
   <section class="wrap" aria-labelledby="h-int">
-    <div class="dim lab"><span class="tick"></span><span>09 — Interests</span><span class="line"></span></div>
+    <div class="dim lab"><span class="tick"></span><span>09 — Outside work</span><span class="line"></span></div>
     <h2 id="h-int" class="reveal">Outside work</h2>
-    <div class="interests" id="interests"></div>
+    <div class="projects" id="projects"></div>
   </section>
 
   <section class="wrap contact" aria-labelledby="h-contact" id="contact">
@@ -401,7 +408,6 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   $("#name-text").textContent = full;
   $("#headline").innerHTML = t(C.headline);
   $("#now").innerHTML = "<span>Now — <b>" + t(C.now.title) + ", " + t(C.now.company) + "</b></span><span>" + t(C.location) + "</span>";
-  $("#place").textContent = C.location;
   $("#photo").src = C.photo.bw;
 
   function ctas() {
@@ -454,7 +460,10 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   $("#certs").innerHTML = C.certificates.map(function (c) {
     return '<div class="row"><span>' + t(c.title) + " · " + t(c.issuer) + '</span><span class="lab">' + t(c.year) + "</span></div>";
   }).join("");
-  $("#interests").innerHTML = C.interests.map(function (x) { return "<span>" + t(x) + "</span>"; }).join("");
+  $("#projects").innerHTML = C.projects.map(function (x) {
+    return '<a class="project" href="' + x.url + '" target="_blank" rel="noopener"><span class="b t"></span><span class="b r"></span><span class="b bt"></span><span class="b l"></span>' +
+      '<div class="txt"><div class="lab k">Personal project</div><h3>' + t(x.title) + "</h3><p>" + t(x.text) + '</p><div class="lab go">' + t(x.label) + " ↗</div></div></a>";
+  }).join("");
 
   var mail = $("#mail"); mail.href = "mailto:" + C.email; mail.textContent = C.email;
   $("#meta").innerHTML = "<span>" + t(C.location) + '</span><a href="' + C.linkedin + '" target="_blank" rel="noopener">' + t(C.linkedinLabel) + "</a>";
@@ -510,6 +519,7 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   K.reveal($$(".about"));
   K.reveal($$(".job"), { threshold: 0.2 });
   K.reveal($$(".callout"), { threshold: 0.3 });
+  K.reveal($$(".project"), { threshold: 0.3 });
   K.reveal($$(".skill-group"), { threshold: 0.2 });
   K.onView($$(".fact"), function (f) {
     f.classList.add("in");

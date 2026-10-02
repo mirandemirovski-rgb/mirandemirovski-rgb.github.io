@@ -30,7 +30,7 @@ window.CV = {
   facts: [
     { value: 10, decimals: 0, suffix: "+", unit: "years", label: "in customer operations" },
     { value: 4.5, decimals: 1, suffix: "+", unit: "years", label: "in real-time & workforce management" },
-    { value: 2, decimals: 0, suffix: "", unit: "teams", label: "managed as a team leader" },
+    { value: 2, decimals: 0, suffix: "", unit: "teams led", label: "as Team Leader, coaching people to reach their goals" },
     { value: 5, decimals: 0, suffix: "", unit: "languages", label: "Croatian, Bosnian, Serbian, Italian, English" }
   ],
 
@@ -40,11 +40,14 @@ window.CV = {
       id: "kaizen", title: "Real Time Analyst", company: "Kaizen Gaming",
       dates: "Nov 2025 – Present", from: [2025, 11], to: null, place: "Athens · Hybrid",
       points: [
-        "Monitor live volumes, service levels and agent statuses through the day, and act quickly to protect SLA.",
-        "Adjust breaks, overtime and staffing in real time, together with team leads and the planning team.",
+        "Monitor real-time performance across multiple markets, and act quickly to protect service level.",
+        "Coordinate daily with multiple BPO partners on staffing, breaks and priorities.",
+        "Support operations live: move resources, adjust breaks and overtime, and escalate issues early.",
+        "Run root cause analysis when service level is missed, and share findings and actions.",
+        "Support planning and keep the headcount tracker up to date.",
         "Build reporting and scheduling tools with Google Apps Script."
       ],
-      tags: ["Real-time Monitoring", "Data Management", "Google Apps Script", "Claude Code", "Claude Skills", "Web Application Design"]
+      tags: ["Real-time Monitoring", "Multi-market", "BPO Coordination", "Root Cause Analysis", "Headcount Tracking", "Data Management", "Google Apps Script", "Claude Code", "Claude Skills", "Web Application Design"]
     },
     {
       id: "ttec-tl", title: "Customer Service Team Lead", company: "TTEC",
@@ -142,7 +145,7 @@ window.CV = {
 
   highlights: [
     { when: "2023", title: "Most Collaborative Employee", text: "Selected as the winner for the most collaborative employee of the project." },
-    { when: "Feb 2024", title: "Training trip to Cairo", text: "Two weeks in Cairo to support and train the new workforce management team." },
+    { when: "Feb 2024", title: "Business trip to Cairo", text: "Two weeks in Cairo to train and support the team in the company's newly opened site." },
     { when: "Google Apps Script", title: "Scheduling web app", text: "Built a scheduling web app for the team from start to finish. It is now officially used by the company." }
   ],
 
@@ -165,5 +168,7 @@ window.CV = {
   certificates: [
     { title: "[[Certificate name]]", issuer: "[[Issued by]]", year: "[[Year]]" }
   ],
-  interests: ["[[Your interests outside work]]"]
+  projects: [
+    { title: "Frammenti", text: "My first website, created by me.", url: "https://mirandemirovski-rgb.github.io/frammenti/", label: "mirandemirovski-rgb.github.io/frammenti" }
+  ]
 };
