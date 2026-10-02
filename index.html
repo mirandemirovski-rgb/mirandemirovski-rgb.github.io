@@ -241,8 +241,36 @@ section .dim { color: var(--c, var(--dim)); }
 
 /* ---------- Contact + signature ---------- */
 .contact { padding-bottom: 120px; }
-.contact .mail { display: inline-block; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.1; font-weight: 400; letter-spacing: -.03em; text-decoration: none; overflow-wrap: anywhere; border-bottom: 1px solid var(--ink); }
-.contact .mail:hover { color: var(--dim); border-color: var(--dim); }
+/* Copy-email button */
+.mail { all: unset; box-sizing: border-box; cursor: pointer; display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; max-width: 100%; }
+.mail .addr { font-size: clamp(20px, 2.4vw, 30px); line-height: 1.2; font-weight: 400; letter-spacing: -.03em; overflow-wrap: anywhere; border-bottom: 1px solid var(--ink); transition: color .2s ease, border-color .2s ease; }
+.mail .hint { color: var(--c, var(--dim)); border: 1px solid currentColor; padding: 5px 8px; transition: background .2s ease, color .2s ease; }
+.mail:hover .addr { color: var(--c, var(--dim)); border-color: currentColor; }
+.mail:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.mail.copied .hint { background: var(--c, var(--dim)); color: var(--paper); border-color: var(--c, var(--dim)); }
+
+/* Quiet top menu, shown after the first screen */
+.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 60; padding-top: env(safe-area-inset-top, 0px); background: rgba(255, 255, 255, .9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--grid-strong); transform: translateY(-105%); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.topbar.show { transform: none; }
+.topbar .bar-in { max-width: var(--max); margin: 0 auto; padding-inline: var(--gut); height: 56px; display: flex; align-items: center; gap: 24px; }
+.topbar .who { font-weight: 600; font-size: 16px; letter-spacing: -.01em; text-decoration: none; margin-right: auto; white-space: nowrap; }
+.topbar nav { display: flex; gap: 22px; }
+.topbar nav a { text-decoration: none; color: var(--muted); padding-block: 6px; border-bottom: 1px solid transparent; transition: color .2s ease, border-color .2s ease; white-space: nowrap; }
+.topbar nav a:hover, .topbar nav a.on { color: var(--c); border-color: var(--c); }
+.topbar .pdf { padding: 10px 12px; }
+[id^="sec-"], #contact { scroll-margin-top: 72px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* Back to top */
+.totop { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 55; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); font: 400 18px/1 var(--sans); cursor: pointer; display: grid; place-items: center; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .35s ease, transform .35s ease, background .2s ease, color .2s ease; }
+.totop.show { opacity: 1; transform: none; pointer-events: auto; }
+.totop:hover { background: var(--ink); color: var(--paper); }
+
+/* Soft lift on cards (computer only) */
+.job, .callout, .project { transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, background .3s ease, color .3s ease; }
+@media (hover: hover) and (pointer: fine) {
+  .job:hover, .callout:hover, .project:hover { transform: translateY(-3px); box-shadow: 0 16px 32px -20px rgba(14, 17, 22, .28); }
+}
 .contact .meta { margin-top: 18px; display: grid; gap: 6px; color: var(--muted); }
 .contact .meta a { text-decoration: none; overflow-wrap: anywhere; }
 .contact .meta a:hover { color: var(--ink); }
@@ -271,6 +299,13 @@ section .dim { color: var(--c, var(--dim)); }
   .about, .duo, .callouts, .projects { grid-template-columns: minmax(0, 1fr); }
   .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (max-width: 720px) {
+  .topbar .who { display: none; }
+  .topbar .bar-in { gap: 14px; justify-content: space-between; }
+  .topbar nav { gap: 14px; }
+  .topbar nav a, .topbar .pdf { font-size: 11px; letter-spacing: .06em; }
+  .topbar .pdf { padding: 9px 10px; }
+}
 @media (max-width: 560px) {
   .timeline { padding-left: 26px; }
   .tl-track, .tl-line { left: 4px; }
@@ -288,6 +323,18 @@ section .dim { color: var(--c, var(--dim)); }
 </style>
 </head>
 <body>
+
+<header class="topbar" id="topbar" aria-label="Quick menu">
+  <div class="bar-in">
+    <a class="who" href="#top"></a>
+    <nav class="lab" aria-label="Sections">
+      <a href="#sec-experience" style="--c:#1d4ed8">Experience</a>
+      <a href="#sec-skills" style="--c:#7e22ce">Skills</a>
+      <a href="#contact" style="--c:#0369a1">Contact</a>
+    </nav>
+    <a class="btn solid pdf" id="top-pdf" download>PDF ↓</a>
+  </div>
+</header>
 
 <header class="hero" id="top">
   <svg class="hero-grid" aria-hidden="true"></svg>
@@ -325,7 +372,7 @@ section .dim { color: var(--c, var(--dim)); }
     <div class="about" id="about"></div>
   </section>
 
-  <section class="wrap" aria-labelledby="h-exp" style="--c:#1d4ed8">
+  <section class="wrap" id="sec-experience" aria-labelledby="h-exp" style="--c:#1d4ed8">
     <div class="dim lab"><span class="tick"></span><span>03 — Experience</span><span class="line"></span></div>
     <h2 id="h-exp" class="reveal">Experience</h2>
     <div class="timeline" id="timeline"><span class="tl-track"></span><span class="tl-line"></span></div>
@@ -337,7 +384,7 @@ section .dim { color: var(--c, var(--dim)); }
     <div class="callouts" id="highlights"></div>
   </section>
 
-  <section class="wrap" aria-labelledby="h-skills" style="--c:#7e22ce">
+  <section class="wrap" id="sec-skills" aria-labelledby="h-skills" style="--c:#7e22ce">
     <div class="dim lab"><span class="tick"></span><span>05 — Skills</span><span class="line"></span></div>
     <h2 id="h-skills" class="reveal">Skills</h2>
     <div class="skills" id="skills"></div>
@@ -367,7 +414,7 @@ section .dim { color: var(--c, var(--dim)); }
   <section class="wrap contact" aria-labelledby="h-contact" style="--c:#0369a1" id="contact">
     <div class="dim lab"><span class="tick"></span><span>09 — Contact</span><span class="line"></span></div>
     <h2 id="h-contact" class="reveal">Contact Details</h2>
-    <a class="mail" id="mail"></a>
+    <button class="mail" id="mail" type="button" aria-describedby="mail-hint"><span class="addr" id="mail-addr"></span><span class="lab hint" id="mail-hint" aria-live="polite">Copy</span></button>
     <div class="meta lab" id="meta"></div>
     <div class="cta" id="cta2"></div>
     <div class="sign-off">
@@ -376,6 +423,8 @@ section .dim { color: var(--c, var(--dim)); }
     </div>
   </section>
 </main>
+
+<button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
 
 
 <script src="assets/cv-data.js"></script>
@@ -449,7 +498,43 @@ section .dim { color: var(--c, var(--dim)); }
       '<div class="txt"><div class="lab k">' + t(x.kind) + '</div><h3>' + t(x.title) + "</h3><p>" + t(x.text) + '</p><div class="lab go">' + t(x.label) + " ↗</div></div></a>";
   }).join("");
 
-  var mail = $("#mail"); mail.href = "mailto:" + C.email; mail.textContent = C.email;
+  /* Copy-email button */
+  var mail = $("#mail"), hint = $("#mail-hint"), copyTimer;
+  $("#mail-addr").textContent = C.email;
+  mail.addEventListener("click", function () {
+    function done() {
+      mail.classList.add("copied"); hint.textContent = "Copied ✓";
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function () { mail.classList.remove("copied"); hint.textContent = "Copy"; }, 2200);
+    }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents($("#mail-addr"));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      try { if (document.execCommand("copy")) done(); } catch (err) {}
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(C.email).then(done, fallback);
+    else fallback();
+  });
+
+  /* Quiet top menu */
+  var bar = $("#topbar");
+  $(".who", bar).textContent = full;
+  $("#top-pdf").href = C.pdf;
+  var navLinks = $$("nav a", bar);
+  var watched = navLinks.map(function (a) { return $(a.getAttribute("href")); });
+
+  /* Back to top */
+  var totop = $("#totop");
+  totop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: K.reduced ? "auto" : "smooth" }); });
+
+  K.onScroll(function () {
+    var heroEnd = $(".hero").offsetHeight - 40;
+    bar.classList.toggle("show", window.scrollY > heroEnd);
+    totop.classList.toggle("show", K.pageProgress() > 0.55);
+    var mid = window.innerHeight * 0.35, current = -1;
+    watched.forEach(function (sec, i) { if (sec && sec.getBoundingClientRect().top < mid) current = i; });
+    navLinks.forEach(function (a, i) { a.classList.toggle("on", i === current); });
+  });
   $("#meta").innerHTML = "<span>" + t(C.location) + "</span>";
 
   /* ---------- Hero grid draws from the centre outward ---------- */
