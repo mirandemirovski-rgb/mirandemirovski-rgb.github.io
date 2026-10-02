@@ -40,11 +40,12 @@ window.CV = {
       id: "kaizen", title: "Real Time Analyst", company: "Kaizen Gaming",
       dates: "Nov 2025 – Present", from: [2025, 11], to: null, place: "Athens · Hybrid",
       points: [
-        "Monitor real-time performance across multiple markets, and act quickly to protect service level.",
-        "Coordinate daily with multiple BPO partners on staffing, breaks and priorities.",
-        "Support operations live: move resources, adjust breaks and overtime, and escalate issues early.",
-        "Run root cause analysis when service level is missed, and share findings and actions.",
-        "Support planning and keep the headcount tracker up to date.",
+        "Monitor real-time performance across multiple markets, managing queues and intraday staffing to meet service level targets.",
+        "Coordinate with multiple BPO partners on coverage needs and on how capacity is distributed across channels.",
+        "Track incidents that drive higher incoming volumes, and take fast action to protect service level.",
+        "Support operations live: reallocate agents between queues, adjust breaks and overtime, and keep stakeholders updated through the day.",
+        "Run root cause analysis on service level results, and recommend actions to improve them.",
+        "Contribute to capacity planning and maintain an accurate headcount view across markets and partners.",
         "Build reporting and scheduling tools with Google Apps Script."
       ],
       tags: ["Real-time Monitoring", "Multi-market", "BPO Coordination", "Root Cause Analysis", "Headcount Tracking", "Data Management", "Google Apps Script", "Claude Code", "Claude Skills", "Web Application Design"]
@@ -169,6 +170,6 @@ window.CV = {
     { title: "[[Certificate name]]", issuer: "[[Issued by]]", year: "[[Year]]" }
   ],
   projects: [
-    { title: "Frammenti", text: "My first website, created by me.", url: "https://mirandemirovski-rgb.github.io/frammenti/", label: "mirandemirovski-rgb.github.io/frammenti" }
+    { title: "Frammenti", kind: "Poetry", text: "My poetry website. Writing is my hobby.", url: "https://mirandemirovski-rgb.github.io/frammenti/", label: "mirandemirovski-rgb.github.io/frammenti" }
   ]
 };

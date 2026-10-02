@@ -462,11 +462,11 @@ h2 { margin: 0 0 clamp(24px, 4vw, 40px); font-size: clamp(30px, 4.4vw, 52px); li
   }).join("");
   $("#projects").innerHTML = C.projects.map(function (x) {
     return '<a class="project" href="' + x.url + '" target="_blank" rel="noopener"><span class="b t"></span><span class="b r"></span><span class="b bt"></span><span class="b l"></span>' +
-      '<div class="txt"><div class="lab k">Personal project</div><h3>' + t(x.title) + "</h3><p>" + t(x.text) + '</p><div class="lab go">' + t(x.label) + " ↗</div></div></a>";
+      '<div class="txt"><div class="lab k">' + t(x.kind) + '</div><h3>' + t(x.title) + "</h3><p>" + t(x.text) + '</p><div class="lab go">' + t(x.label) + " ↗</div></div></a>";
   }).join("");
 
   var mail = $("#mail"); mail.href = "mailto:" + C.email; mail.textContent = C.email;
-  $("#meta").innerHTML = "<span>" + t(C.location) + '</span><a href="' + C.linkedin + '" target="_blank" rel="noopener">' + t(C.linkedinLabel) + "</a>";
+  $("#meta").innerHTML = "<span>" + t(C.location) + "</span>";
 
   /* ---------- Hero grid draws from the centre outward ---------- */
   var hero = $(".hero"), svg = $(".hero-grid");
