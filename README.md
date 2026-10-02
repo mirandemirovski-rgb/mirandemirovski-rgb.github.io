@@ -5,7 +5,8 @@ Interactive CV website for Miran Demirovski, published with GitHub Pages.
 | File | What it is |
 | --- | --- |
 | `index.html` | The CV website (Blueprint style) |
-| `assets/cv-data.js` | All CV text. Edit it here once; the website and the PDF layout both update |
+| `compact/index.html` | A shorter version of the CV (skills first, older roles folded) at `/compact/` |
+| `assets/cv-data.js` | All CV text. Edit it here once; both website versions and the PDF layout update |
 | `print.html` | The one-page A4 layout used to make the PDF |
 | `assets/Miran-Demirovski-CV.pdf` | The one-page PDF behind the "Download PDF" button |
 | `assets/og-image.png` | The picture shown when the link is shared |

@@ -6,22 +6,22 @@
 <title>Miran Demirovski — Real-Time &amp; Workforce Management</title>
 <meta name="description" content="Real-Time Analyst in Athens. 10+ years in customer operations, workforce management and team leadership.">
 <meta name="author" content="Miran Demirovski">
-<link rel="canonical" href="https://mirandemirovski-rgb.github.io/">
+<link rel="canonical" href="https://mirandemirovski-rgb.github.io/compact/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Miran Demirovski — Real-Time &amp; Workforce Management">
 <meta property="og:description" content="Real-Time Analyst in Athens. 10+ years in customer operations, workforce management and team leadership.">
-<meta property="og:url" content="https://mirandemirovski-rgb.github.io/">
+<meta property="og:url" content="https://mirandemirovski-rgb.github.io/compact/">
 <meta property="og:image" content="https://mirandemirovski-rgb.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200..800&family=Geist:wght@400;500;600&family=Pinyon+Script&display=swap">
-<link rel="stylesheet" href="assets/core.css">
+<link rel="stylesheet" href="../assets/core.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Miran Demirovski","jobTitle":"Real Time Analyst","worksFor":{"@type":"Organization","name":"Kaizen Gaming"},"address":{"@type":"PostalAddress","addressLocality":"Athens","addressCountry":"GR"},"email":"mailto:mirandemirovski@yahoo.it","url":"https://mirandemirovski-rgb.github.io/","sameAs":["https://www.linkedin.com/in/miran-demirovski-b1aa41196"]}
 </script>
@@ -194,6 +194,17 @@ section .dim { color: var(--c, var(--dim)); }
 .js .job .body { opacity: 0; transform: translateY(6px); transition: opacity .7s ease .55s, transform .7s cubic-bezier(.2,.8,.2,1) .55s; }
 .js .job.in .body { opacity: 1; transform: none; }
 .job.current .when { color: var(--ink); }
+.older { margin-top: 12px; border-top: 1px solid var(--grid-strong); }
+.older details { border-bottom: 1px solid var(--grid-strong); }
+.older summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; padding: 12px 0; }
+.older summary::-webkit-details-marker { display: none; }
+.older summary .ot { position: relative; padding-left: 20px; }
+.older summary .ot::before { content: "+"; position: absolute; left: 0; top: -1px; color: var(--c, var(--dim)); font-weight: 600; transition: transform .25s ease; }
+.older details[open] summary .ot::before { transform: rotate(45deg); }
+.older summary b { font-weight: 600; }
+.older summary:hover b { color: var(--c, var(--dim)); }
+.older .od { color: var(--muted); }
+.older ul { margin: 0 0 14px 20px; }
 
 /* Highlights as drawing callouts */
 .callouts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -208,11 +219,14 @@ section .dim { color: var(--c, var(--dim)); }
 .js .callout.in .txt { opacity: 1; }
 
 /* Skills with measured underlines */
-.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 28px; }
-.skill-group h3 { margin: 0 0 14px; color: var(--dim); }
-.skill-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.skill-group li { position: relative; padding-bottom: 9px; font-size: 16px; line-height: 1.3; }
-.skill-group li::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; border-left: 1px solid var(--ink); border-right: 1px solid var(--ink); background: linear-gradient(var(--ink), var(--ink)) center / 100% 1px no-repeat; transform-origin: left; }
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px clamp(24px, 4vw, 56px); }
+.skill-group { min-width: 0; }
+.skill-group h3 { margin: 0 0 12px; color: var(--c, var(--dim)); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 15px; line-height: 1.2; padding: 8px 12px; border: 1px solid var(--grid-strong); background: var(--paper); transition: border-color .2s ease, color .2s ease; }
+.chip:hover { border-color: var(--c, var(--ink)); color: var(--c, var(--ink)); }
+.js .chip { opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1), border-color .2s ease, color .2s ease; transition-delay: calc(var(--i) * 35ms), calc(var(--i) * 35ms), 0s, 0s; }
+.js .skill-group.in .chip { opacity: 1; transform: none; }
 .js .skill-group li::after { transform: scaleX(0); transition: transform .8s cubic-bezier(.6,.05,.25,1); transition-delay: calc(var(--i) * 70ms); }
 .js .skill-group.in li::after { transform: none; }
 
@@ -296,8 +310,7 @@ section .dim { color: var(--c, var(--dim)); }
   .fact:nth-child(2) { border-right: 0; }
   .fact:nth-child(3) { padding-left: 0; }
   .fact:nth-child(n+3) { border-top: 1px solid var(--grid-strong); }
-  .about, .duo, .callouts, .projects { grid-template-columns: minmax(0, 1fr); }
-  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about, .duo, .callouts, .projects, .skills { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 720px) {
   .topbar .who { display: none; }
@@ -307,18 +320,41 @@ section .dim { color: var(--c, var(--dim)); }
   .topbar .pdf { padding: 9px 10px; }
 }
 @media (max-width: 560px) {
+  body { font-size: 15px; line-height: 1.55; }
+  section { padding-block: 44px 0; }
+  h2 { font-size: 27px; margin-bottom: 20px; }
+  .dim { margin-bottom: 18px; }
+  .hero { padding-block: 40px 32px; }
+  .hero-text { gap: 16px; }
+  .headline { font-size: 16px; }
+  .photo { max-width: 300px; }
+  .fact { padding-block: 16px 18px; gap: 6px; }
+  .fact .num { font-size: 38px; }
+  .fact .lbl { font-size: 13.5px; }
+  .about .lead { font-size: 20px; }
+  .about .body { font-size: 15px; gap: 10px; }
+  .job h3 { font-size: 18px; }
+  .job ul { margin-top: 10px; gap: 6px; }
+  .job .tags { display: none; }
+  .timeline { gap: 12px; }
+  .callout h3 { font-size: 18px; }
+  .chip { font-size: 13.5px; padding: 7px 10px; }
+  .row { padding-block: 12px; }
+  .cert .cn { font-size: 15.5px; }
+  .project { padding: 20px 18px; }
+  .project h3 { font-size: 20px; }
+  .contact { padding-bottom: 90px; }
   .timeline { padding-left: 26px; }
   .tl-track, .tl-line { left: 4px; }
   .job { grid-template-columns: minmax(0, 1fr); padding: 18px 16px; }
   .job .node { left: -27px; top: 24px; }
   .callout { padding: 22px 16px 22px 70px; }
   .callout .bubble { left: 16px; }
-  .skills { grid-template-columns: minmax(0, 1fr); }
   .fact { padding-right: 12px; }
   .fact + .fact { padding-left: 12px; }
   .fact:nth-child(3) { padding-left: 0; }
   .corner { display: none; }
-  .row { font-size: 17px; }
+  .row { font-size: 15.5px; }
 }
 </style>
 </head>
@@ -328,8 +364,8 @@ section .dim { color: var(--c, var(--dim)); }
   <div class="bar-in">
     <a class="who" href="#top"></a>
     <nav class="lab" aria-label="Sections">
-      <a href="#sec-experience" style="--c:#1d4ed8">Experience</a>
       <a href="#sec-skills" style="--c:#7e22ce">Skills</a>
+      <a href="#sec-experience" style="--c:#1d4ed8">Experience</a>
       <a href="#contact" style="--c:#0369a1">Contact</a>
     </nav>
     <a class="btn solid pdf" id="top-pdf" download>PDF ↓</a>
@@ -372,22 +408,22 @@ section .dim { color: var(--c, var(--dim)); }
     <div class="about" id="about"></div>
   </section>
 
+  <section class="wrap" id="sec-skills" aria-labelledby="h-skills" style="--c:#7e22ce">
+    <div class="dim lab"><span class="tick"></span><span>03 — Skills</span><span class="line"></span></div>
+    <h2 id="h-skills" class="reveal">Skills</h2>
+    <div class="skills" id="skills"></div>
+  </section>
+
   <section class="wrap" id="sec-experience" aria-labelledby="h-exp" style="--c:#1d4ed8">
-    <div class="dim lab"><span class="tick"></span><span>03 — Experience</span><span class="line"></span></div>
+    <div class="dim lab"><span class="tick"></span><span>04 — Experience</span><span class="line"></span></div>
     <h2 id="h-exp" class="reveal">Experience</h2>
     <div class="timeline" id="timeline"><span class="tl-track"></span><span class="tl-line"></span></div>
   </section>
 
   <section class="wrap" aria-labelledby="h-hi" style="--c:#c2410c">
-    <div class="dim lab"><span class="tick"></span><span>04 — Highlights</span><span class="line"></span></div>
+    <div class="dim lab"><span class="tick"></span><span>05 — Highlights</span><span class="line"></span></div>
     <h2 id="h-hi" class="reveal">Highlights</h2>
     <div class="callouts" id="highlights"></div>
-  </section>
-
-  <section class="wrap" id="sec-skills" aria-labelledby="h-skills" style="--c:#7e22ce">
-    <div class="dim lab"><span class="tick"></span><span>05 — Skills</span><span class="line"></span></div>
-    <h2 id="h-skills" class="reveal">Skills</h2>
-    <div class="skills" id="skills"></div>
   </section>
 
   <section class="wrap" aria-labelledby="h-lang" style="--c:#be123c">
@@ -427,8 +463,12 @@ section .dim { color: var(--c, var(--dim)); }
 <button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
 
 
-<script src="assets/cv-data.js"></script>
-<script src="assets/core.js"></script>
+<script src="../assets/cv-data.js"></script>
+<script>
+  /* This page lives in /compact/: point shared files one folder up. */
+  (function (C) { C.pdf = "../" + C.pdf; C.photo = { color: "../" + C.photo.color, bw: "../" + C.photo.bw }; })(window.CV);
+</script>
+<script src="../assets/core.js"></script>
 <script>
 (function () {
   "use strict";
@@ -459,7 +499,8 @@ section .dim { color: var(--c, var(--dim)); }
     C.about.map(function (p, i) { return '<p style="--i:' + i + '">' + t(p) + "</p>"; }).join("") + "</div>";
 
   var tl = $("#timeline");
-  C.jobs.forEach(function (j, i) {
+  var OLDER = ["ttec-css", "tp-tl", "tp-senior", "tp-css", "data"];
+  C.jobs.filter(function (j) { return OLDER.indexOf(j.id) < 0; }).forEach(function (j, i) {
     var a = document.createElement("article");
     a.className = "job" + (i === 0 ? " current" : "");
     a.innerHTML = '<span class="node" aria-hidden="true"></span>' +
@@ -471,6 +512,18 @@ section .dim { color: var(--c, var(--dim)); }
       "</div>";
     tl.appendChild(a);
   });
+  var older = C.jobs.filter(function (j) { return OLDER.indexOf(j.id) >= 0; });
+  var ea = document.createElement("article");
+  ea.className = "job earlier";
+  ea.innerHTML = '<span class="node" aria-hidden="true"></span>' +
+    '<span class="b t"></span><span class="b r"></span><span class="b bt"></span><span class="b l"></span>' +
+    '<div class="lab when">2008 – 2019<span>' + older.length + ' roles</span></div>' +
+    '<div class="body"><h3>Earlier roles</h3><p class="co">Tap a role to see details</p><div class="older">' +
+    older.map(function (j) {
+      return '<details><summary><span class="ot"><b>' + t(j.title) + "</b> · " + t(j.company) + '</span><span class="lab od">' + t(j.dates) + "</span></summary>" +
+        (j.points.length ? "<ul>" + j.points.map(function (p) { return "<li>" + t(p) + "</li>"; }).join("") + "</ul>" : "") + "</details>";
+    }).join("") + "</div></div>";
+  tl.appendChild(ea);
 
   $("#highlights").innerHTML = C.highlights.map(function (h, i) {
     return '<div class="callout"><span class="b t"></span><span class="b r"></span><span class="b bt"></span><span class="b l"></span>' +
@@ -479,8 +532,8 @@ section .dim { color: var(--c, var(--dim)); }
   }).join("");
 
   $("#skills").innerHTML = C.skills.map(function (g) {
-    return '<div class="skill-group"><h3 class="lab">' + t(g.group) + "</h3><ul>" +
-      g.items.map(function (s, i) { return '<li style="--i:' + i + '">' + t(s) + "</li>"; }).join("") + "</ul></div>";
+    return '<div class="skill-group"><h3 class="lab">' + t(g.group) + '</h3><div class="chips">' +
+      g.items.map(function (x, i) { return '<span class="chip" style="--i:' + i + '">' + t(x) + "</span>"; }).join("") + "</div></div>";
   }).join("");
 
   $("#langs").innerHTML = C.languages.map(function (l) {
